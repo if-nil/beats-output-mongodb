@@ -1,0 +1,15 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - my_log_path/*.log
+    fields:
+      log_source: messages
+    fields_under_root: true
+    encoding: GB2312
+
+output.mongodb:
+  hosts: ["mongodb://localhost:27017", "mongodb://localhost:27018"]
+  db: test_log
+  collection: test_log
+  bulk_max_size: 2
